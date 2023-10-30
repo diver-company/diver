@@ -1,3 +1,4 @@
+import 'package:diver/screens/welcome.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class _AppState extends State<App> {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "App",
-      home: Scaffold(),
+      home: Welcome(),
     );
   }
 }
