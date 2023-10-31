@@ -67,11 +67,151 @@ class S {
     );
   }
 
+  /// `Username or Email`
+  String get signInUsernameOrEmail {
+    return Intl.message(
+      'Username or Email',
+      name: 'signInUsernameOrEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passsword`
+  String get signInPassword {
+    return Intl.message(
+      'Passsword',
+      name: 'signInPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get signInForgotPassword {
+    return Intl.message(
+      'Forgot password?',
+      name: 'signInForgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No account yet?`
+  String get signInRegisterHere1 {
+    return Intl.message(
+      'No account yet?',
+      name: 'signInRegisterHere1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register here`
+  String get signInRegisterHere2 {
+    return Intl.message(
+      'Register here',
+      name: 'signInRegisterHere2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get registerEmail {
+    return Intl.message(
+      'Email',
+      name: 'registerEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get registerPassword {
+    return Intl.message(
+      'Password',
+      name: 'registerPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repeat password`
+  String get registerPasswordRepeat {
+    return Intl.message(
+      'Repeat password',
+      name: 'registerPasswordRepeat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get registerUsername {
+    return Intl.message(
+      'Username',
+      name: 'registerUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can also create a username at a later time.`
+  String get registerUsernameHint {
+    return Intl.message(
+      'You can also create a username at a later time.',
+      name: 'registerUsernameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have an account?`
+  String get registerSignInHere1 {
+    return Intl.message(
+      'Have an account?',
+      name: 'registerSignInHere1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in here`
+  String get registerSignInHere2 {
+    return Intl.message(
+      'Sign in here',
+      name: 'registerSignInHere2',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Get started`
   String get btn_getStarted {
     return Intl.message(
       'Get started',
       name: 'btn_getStarted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get btn_signIn {
+    return Intl.message(
+      'Sign in',
+      name: 'btn_signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get btn_register {
+    return Intl.message(
+      'Register',
+      name: 'btn_register',
       desc: '',
       args: [],
     );

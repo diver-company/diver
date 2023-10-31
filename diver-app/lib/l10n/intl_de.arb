@@ -2,5 +2,20 @@
   "@@locale": "de",
   "welcomeHeadline": "Deine Stimme, deine Anonymität, deine Community.",
   "welcomeDescription": "Willkommen in der Community, wo Meinungsfreiheit und respektvolle Interaktionen im Mittelpunkt stehen. Starte deine Reise mit uns und finde deinen Platz in einer vielfältigen, anonymen und inspirierenden Umgebung – DIVER erwartet dich!",
-  "btn_getStarted": "Loslegen"
+  "signInUsernameOrEmail": "Username oder E-Mail",
+  "signInPassword": "Passswort",
+  "signInForgotPassword": "Passwort vergessen?",
+  "signInRegisterHere1": "Noch nicht angemeldet?",
+  "signInRegisterHere2": "Hier registrieren",
+  "registerEmail": "E-Mail",
+  "registerPassword": "Passwort",
+  "registerPasswordRepeat": "Passwort wiederholen",
+  "registerUsername": "Username",
+  "registerUsernameHint": "Du kannst auch später einen Usernamen festlegen.",
+  "registerSignInHere1": "Du hast bereits einen Account?",
+  "registerSignInHere2": "Hier anmelden",
+
+  "btn_getStarted": "Loslegen",
+  "btn_signIn": "Anmelden",
+  "btn_register": "Registrieren"
 }

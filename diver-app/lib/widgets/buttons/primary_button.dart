@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PrimaryButton extends StatelessWidget {
-  const PrimaryButton(
+class PrimaryButton extends StatefulWidget {
+  PrimaryButton(
       {super.key, required this.text, this.icon, required this.onTap});
 
   final String text;
@@ -10,12 +10,17 @@ class PrimaryButton extends StatelessWidget {
   final void Function()? onTap;
 
   @override
+  State<PrimaryButton> createState() => _PrimaryButtonState();
+}
+
+class _PrimaryButtonState extends State<PrimaryButton> {
+  @override
   Widget build(BuildContext context) {
     return Material(
       color: const Color(0xFF3E8989),
       borderRadius: BorderRadius.circular(6.0),
       child: InkWell(
-        onTap: onTap,
+        onTap: widget.onTap,
         borderRadius: BorderRadius.circular(6.0),
         child: GestureDetector(
           child: Container(
@@ -33,16 +38,16 @@ class PrimaryButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  text,
+                  widget.text,
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(color: Colors.white),
                       fontWeight: FontWeight.w500,
                       fontSize: 20.0),
                 ),
                 const SizedBox(width: 8),
-                if (icon != null)
+                if (widget.icon != null)
                   Icon(
-                    icon,
+                    widget.icon,
                     size: 20.0,
                     color: Colors.white,
                   )

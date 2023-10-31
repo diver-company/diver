@@ -2,5 +2,20 @@
   "@@locale": "en",
   "welcomeHeadline": "Your voice, your anonymity, your community.",
   "welcomeDescription": "Welcome to the community where freedom of expression and respectful interactions take center stage. Begin your journey with us and find your place in a diverse, anonymous, and inspiring environment – DIVER awaits you!",
-  "btn_getStarted": "Get started"
+  "signInUsernameOrEmail": "Username or Email",
+  "signInPassword": "Passsword",
+  "signInForgotPassword": "Forgot password?",
+  "signInRegisterHere1": "No account yet?",
+  "signInRegisterHere2": "Register here",
+  "registerEmail": "Email",
+  "registerPassword": "Password",
+  "registerPasswordRepeat": "Repeat password",
+  "registerUsername": "Username",
+  "registerUsernameHint": "You can also create a username at a later time.",
+  "registerSignInHere1": "Have an account?",
+  "registerSignInHere2": "Sign in here",
+
+  "btn_getStarted": "Get started",
+  "btn_signIn": "Sign in",
+  "btn_register": "Register"
 }

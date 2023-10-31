@@ -22,6 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "btn_getStarted" : MessageLookupByLibrary.simpleMessage("Loslegen"),
+    "btn_register" : MessageLookupByLibrary.simpleMessage("Registrieren"),
+    "btn_signIn" : MessageLookupByLibrary.simpleMessage("Anmelden"),
+    "registerEmail" : MessageLookupByLibrary.simpleMessage("E-Mail"),
+    "registerPassword" : MessageLookupByLibrary.simpleMessage("Passwort"),
+    "registerPasswordRepeat" : MessageLookupByLibrary.simpleMessage("Passwort wiederholen"),
+    "registerSignInHere1" : MessageLookupByLibrary.simpleMessage("Du hast bereits einen Account?"),
+    "registerSignInHere2" : MessageLookupByLibrary.simpleMessage("Hier anmelden"),
+    "registerUsername" : MessageLookupByLibrary.simpleMessage("Username"),
+    "registerUsernameHint" : MessageLookupByLibrary.simpleMessage("Du kannst auch später einen Usernamen festlegen."),
+    "signInForgotPassword" : MessageLookupByLibrary.simpleMessage("Passwort vergessen?"),
+    "signInPassword" : MessageLookupByLibrary.simpleMessage("Passswort"),
+    "signInRegisterHere1" : MessageLookupByLibrary.simpleMessage("Noch nicht angemeldet?"),
+    "signInRegisterHere2" : MessageLookupByLibrary.simpleMessage("Hier registrieren"),
+    "signInUsernameOrEmail" : MessageLookupByLibrary.simpleMessage("Username oder E-Mail"),
     "welcomeDescription" : MessageLookupByLibrary.simpleMessage("Willkommen in der Community, wo Meinungsfreiheit und respektvolle Interaktionen im Mittelpunkt stehen. Starte deine Reise mit uns und finde deinen Platz in einer vielfältigen, anonymen und inspirierenden Umgebung – DIVER erwartet dich!"),
     "welcomeHeadline" : MessageLookupByLibrary.simpleMessage("Deine Stimme, deine Anonymität, deine Community.")
   };
