@@ -40,11 +40,12 @@ class PrimaryButton extends StatelessWidget {
                       fontSize: 20.0),
                 ),
                 const SizedBox(width: 8),
-                Icon(
-                  icon,
-                  size: 20.0,
-                  color: Colors.white,
-                )
+                if (icon != null)
+                  Icon(
+                    icon,
+                    size: 20.0,
+                    color: Colors.white,
+                  )
               ],
             ),
           ),

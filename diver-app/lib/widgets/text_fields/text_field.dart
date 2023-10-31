@@ -1,3 +1,4 @@
+import 'package:diver/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -21,7 +22,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       obscureText: widget.obscureText,
       decoration: InputDecoration(
-        enabledBorder: const OutlineInputBorder(),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).brightness == Brightness.light ? kContentColorLightTheme : kContentColorDarkTheme,
+          ),
+        ),
         hintText: widget.hintText,
         border: const OutlineInputBorder(),
       ),
