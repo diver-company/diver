@@ -19,9 +19,9 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -53,11 +53,13 @@ class _SignInState extends State<SignIn> {
                       children: [
                         Text(
                           S.of(context).signInForgotPassword,
-                          style:
-                              Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    fontWeight: FontWeight.w100,
-                                    color: themeBasedDimmedContentColor(context),
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                fontWeight: FontWeight.w100,
+                                color: themeBasedDimmedContentColor(context),
+                              ),
                         ),
                       ],
                     ),
@@ -79,16 +81,19 @@ class _SignInState extends State<SignIn> {
                                 .bodyLarge
                                 ?.copyWith(
                                     fontWeight: FontWeight.w100,
-                                    color: themeBasedDimmedContentColor(context)),
+                                    color:
+                                        themeBasedDimmedContentColor(context)),
                           ),
                           const SizedBox(width: 4),
                           Text(
                             S.of(context).signInRegisterHere2,
-                            style:
-                                Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color: themeBasedDimmedContentColor(context),
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: themeBasedDimmedContentColor(context),
+                                ),
                           ),
                         ],
                       ),
