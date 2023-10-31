@@ -56,7 +56,7 @@ class _SignInState extends State<SignIn> {
                           style:
                               Theme.of(context).textTheme.bodyLarge?.copyWith(
                                     fontWeight: FontWeight.w100,
-                                    color: themeBasedContentColor(context),
+                                    color: themeBasedDimmedContentColor(context),
                                   ),
                         ),
                       ],
@@ -79,7 +79,7 @@ class _SignInState extends State<SignIn> {
                                 .bodyLarge
                                 ?.copyWith(
                                     fontWeight: FontWeight.w100,
-                                    color: themeBasedContentColor(context)),
+                                    color: themeBasedDimmedContentColor(context)),
                           ),
                           const SizedBox(width: 4),
                           Text(
@@ -87,7 +87,7 @@ class _SignInState extends State<SignIn> {
                             style:
                                 Theme.of(context).textTheme.bodyLarge?.copyWith(
                                       fontWeight: FontWeight.bold,
-                                      color: themeBasedContentColor(context),
+                                      color: themeBasedDimmedContentColor(context),
                                     ),
                           ),
                         ],

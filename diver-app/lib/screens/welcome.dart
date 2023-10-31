@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:diver/constants.dart';
+import 'package:diver/utils/utils.dart';
 import 'package:diver/widgets/buttons/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,7 +56,8 @@ class _WelcomeState extends State<Welcome> {
                                 fontSize: Theme.of(context)
                                     .textTheme
                                     .displayMedium
-                                    ?.fontSize),
+                                    ?.fontSize,
+                                color: kContentColorDarkTheme),
                           ),
                           const SizedBox(height: 8),
                           Text(
@@ -63,15 +65,19 @@ class _WelcomeState extends State<Welcome> {
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineSmall
-                                ?.copyWith(fontWeight: FontWeight.w100),
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w100,
+                                  color: kContentColorDarkTheme,
+                                ),
                           ),
                           const SizedBox(height: 8.0),
                           Text(
                             S.of(context).welcomeDescription,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(height: 1.5),
+                            style:
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      height: 1.5,
+                                      color: kContentColorDarkTheme,
+                                    ),
                           ),
                           const SizedBox(height: 24.0),
                           PrimaryButton(

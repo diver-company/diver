@@ -29,5 +29,10 @@ ThemeData customThemeData(BuildContext context, {required bool isDark}) {
       secondary: kSecondaryColor,
       error: kErrorColor,
     ),
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CupertinoPageTransitionsBuilder()
+      }
+    )
   );
 }

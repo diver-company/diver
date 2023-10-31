@@ -27,7 +27,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             color: Theme.of(context).brightness == Brightness.light ? kContentColorLightTheme : kContentColorDarkTheme,
           ),
         ),
-        hintText: widget.hintText,
+        labelText: widget.hintText,
         border: const OutlineInputBorder(),
       ),
       controller: widget.controller,

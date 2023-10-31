@@ -51,7 +51,6 @@ class _AppState extends State<App> {
         GlobalCupertinoLocalizations.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale("de"),
       theme: customThemeData(context, isDark: false),
       darkTheme: customThemeData(context, isDark: true),
       title: "DIVER",

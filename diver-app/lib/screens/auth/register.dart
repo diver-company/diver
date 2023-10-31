@@ -74,7 +74,7 @@ class _RegisterState extends State<Register> {
                               S.of(context).registerUsernameHint,
                               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                 fontWeight: FontWeight.w100,
-                                color: themeBasedContentColor(context),
+                                color: themeBasedDimmedContentColor(context),
                               ),
                             ),
                           ],
@@ -97,7 +97,7 @@ class _RegisterState extends State<Register> {
                                     .bodyLarge
                                     ?.copyWith(
                                         fontWeight: FontWeight.w100,
-                                        color: themeBasedContentColor(context)),
+                                        color: themeBasedDimmedContentColor(context)),
                               ),
                               const SizedBox(width: 4),
                               Text(
@@ -107,7 +107,7 @@ class _RegisterState extends State<Register> {
                                     .bodyLarge
                                     ?.copyWith(
                                       fontWeight: FontWeight.bold,
-                                      color: themeBasedContentColor(context),
+                                      color: themeBasedDimmedContentColor(context),
                                     ),
                               ),
                             ],
