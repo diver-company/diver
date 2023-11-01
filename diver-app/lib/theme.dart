@@ -7,6 +7,7 @@ ThemeData customThemeData(BuildContext context, {required bool isDark}) {
   final scaffoldColor = isDark ? kContentColorLightTheme : Colors.white;
 
   return ThemeData(
+    useMaterial3: true,
     brightness: isDark ? Brightness.dark : Brightness.light,
     primaryColor: kPrimaryColor,
     scaffoldBackgroundColor: scaffoldColor,

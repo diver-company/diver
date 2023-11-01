@@ -1,6 +1,8 @@
 import 'package:diver/constants.dart';
+import 'package:diver/screens/app/app.dart';
 import 'package:diver/screens/auth/register.dart';
 import 'package:diver/screens/auth/sign_in.dart';
+import 'package:diver/screens/new_post/new_post.dart';
 import 'package:diver/screens/welcome.dart';
 import 'package:diver/theme.dart';
 import 'package:flutter/material.dart';
@@ -9,17 +11,17 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(const App());
+  runApp(const Diver());
 }
 
-class App extends StatefulWidget {
-  const App({super.key});
+class Diver extends StatefulWidget {
+  const Diver({super.key});
 
   @override
-  State<App> createState() => _AppState();
+  State<Diver> createState() => _DiverState();
 }
 
-class _AppState extends State<App> {
+class _DiverState extends State<Diver> {
   bool _isNew = true;
 
   @override
@@ -58,7 +60,9 @@ class _AppState extends State<App> {
       routes: {
         '/': (context) => const Welcome(),
         '/sign-in': (context) => const SignIn(),
-        '/register': (context) => const Register()
+        '/register': (context) => const Register(),
+        '/feed': (context) => const App(),
+        '/feed/new-post': (context) => const NewPost()
       },
     );
   }

@@ -5,6 +5,7 @@ import 'package:diver/widgets/text_fields/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:diver/generated/l10n.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -14,8 +15,10 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final FormGroup _formGroup = fb.group({
+    'emailOrUsername': ['', Validators.required],
+    'password': ['', Validators.required]
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,19 +36,29 @@ class _SignInState extends State<SignIn> {
                         Theme.of(context).textTheme.displayMedium?.fontSize),
               ),
               const SizedBox(height: 32),
-              Form(
+              ReactiveForm(
+                formGroup: _formGroup,
                 child: Column(
                   children: [
-                    CustomTextField(
-                      hintText: S.of(context).signInUsernameOrEmail,
+                    ReactiveTextField(
+                      formControlName: 'emailOrUsername',
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: themeBasedBorderSide(context)),
+                        labelText: S.of(context).signInUsernameOrEmail,
+                      ),
                       obscureText: false,
-                      controller: _usernameController,
                     ),
                     const SizedBox(height: 24),
-                    CustomTextField(
-                      hintText: S.of(context).signInPassword,
+                    ReactiveTextField(
+                      formControlName: "password",
+                      decoration: InputDecoration(
+                        labelText: S.of(context).signInPassword,
+                        border: OutlineInputBorder(
+                            borderSide: themeBasedBorderSide(context)),
+                      ),
                       obscureText: true,
-                      controller: _passwordController,
                     ),
                     const SizedBox(height: 8),
                     Row(
@@ -66,7 +79,9 @@ class _SignInState extends State<SignIn> {
                     const SizedBox(height: 32),
                     PrimaryButton(
                       text: S.of(context).btn_signIn,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pushReplacementNamed('/feed');
+                      },
                     ),
                     const SizedBox(height: 24),
                     GestureDetector(

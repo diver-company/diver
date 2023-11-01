@@ -21,7 +21,7 @@ class _WelcomeState extends State<Welcome> {
     await prefs.setBool(kHasSeenWelcomeScreen, true);
 
     if (context.mounted) {
-      Navigator.pushNamed(context, '/sign-in');
+      Navigator.pushReplacementNamed(context, '/sign-in');
     }
   }
 
