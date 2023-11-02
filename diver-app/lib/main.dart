@@ -2,7 +2,7 @@ import 'package:diver/constants.dart';
 import 'package:diver/screens/app/app.dart';
 import 'package:diver/screens/auth/register.dart';
 import 'package:diver/screens/auth/sign_in.dart';
-import 'package:diver/screens/new_post/new_post.dart';
+import 'package:diver/screens/posts/new_post.dart';
 import 'package:diver/screens/welcome.dart';
 import 'package:diver/theme.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +62,7 @@ class _DiverState extends State<Diver> {
         '/sign-in': (context) => const SignIn(),
         '/register': (context) => const Register(),
         '/feed': (context) => const App(),
-        '/feed/new-post': (context) => const NewPost()
+        '/feed/new-post': (context) => const NewPost(),
       },
     );
   }

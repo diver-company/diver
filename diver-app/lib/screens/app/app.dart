@@ -2,7 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:diver/constants.dart';
 import 'package:diver/screens/chat/chat.dart';
 import 'package:diver/screens/feed/feed.dart';
-import 'package:diver/screens/new_post/new_post.dart';
+import 'package:diver/screens/posts/new_post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,20 +48,18 @@ class _AppState extends State<App> {
               child: _buildNewPostWidget(context),
             )
           : null,
-      body: CupertinoPageScaffold(
-        child: PageTransitionSwitcher(
-          reverse: _selectedIndex != 0,
-          transitionBuilder: (Widget child, Animation<double> animation,
-              Animation<double> secondaryAnimation) {
-            return SharedAxisTransition(
-              transitionType: SharedAxisTransitionType.horizontal,
-              animation: animation,
-              secondaryAnimation: secondaryAnimation,
-              child: child,
-            );
-          },
-          child: _pages[_selectedIndex],
-        ),
+      body: PageTransitionSwitcher(
+        reverse: _selectedIndex != 0,
+        transitionBuilder: (Widget child, Animation<double> animation,
+            Animation<double> secondaryAnimation) {
+          return FadeThroughTransition(
+            //transitionType: SharedAxisTransitionType.horizontal,
+            animation: animation,
+            secondaryAnimation: secondaryAnimation,
+            child: child,
+          );
+        },
+        child: _pages[_selectedIndex],
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
@@ -104,7 +102,7 @@ class _AppState extends State<App> {
   }
 
   Widget _buildNewPostWidget(BuildContext context) {
-    return Theme.of(context).platform != TargetPlatform.android
+    return Theme.of(context).platform == TargetPlatform.android
         ? OpenContainer(
             transitionType: ContainerTransitionType.fade,
             openBuilder: (BuildContext context, VoidCallback _) {
