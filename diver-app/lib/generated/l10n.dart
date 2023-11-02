@@ -187,6 +187,36 @@ class S {
     );
   }
 
+  /// `Home`
+  String get navigationBarHome {
+    return Intl.message(
+      'Home',
+      name: 'navigationBarHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat`
+  String get navigationChat {
+    return Intl.message(
+      'Chat',
+      name: 'navigationChat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get navigationSettings {
+    return Intl.message(
+      'Settings',
+      name: 'navigationSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Get started`
   String get btn_getStarted {
     return Intl.message(

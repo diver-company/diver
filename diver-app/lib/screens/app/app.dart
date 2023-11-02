@@ -3,8 +3,10 @@ import 'package:diver/constants.dart';
 import 'package:diver/screens/chat/chat.dart';
 import 'package:diver/screens/feed/feed.dart';
 import 'package:diver/screens/new_post/new_post.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:diver/generated/l10n.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -16,7 +18,11 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = <Widget>[const Feed(), const Chat(), const Chat()];
+  final List<Widget> _pages = <Widget>[
+    const Feed(),
+    const Chat(),
+    const Chat()
+  ];
 
   void selectDestination(int idx) {
     setState(() {
@@ -28,7 +34,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 4.0,
+        //elevation: 4.0,
         centerTitle: true,
         title: Text(
           "Diver",
@@ -42,42 +48,55 @@ class _AppState extends State<App> {
               child: _buildNewPostWidget(context),
             )
           : null,
-      body: PageTransitionSwitcher(
-        reverse: _selectedIndex != 0,
-        transitionBuilder: (Widget child, Animation<double> animation,
-            Animation<double> secondaryAnimation) {
-          return SharedAxisTransition(
-            transitionType: SharedAxisTransitionType.horizontal,
-            animation: animation,
-            secondaryAnimation: secondaryAnimation,
-            child: child,
-          );
-        },
-        child: _pages[_selectedIndex],
+      body: CupertinoPageScaffold(
+        child: PageTransitionSwitcher(
+          reverse: _selectedIndex != 0,
+          transitionBuilder: (Widget child, Animation<double> animation,
+              Animation<double> secondaryAnimation) {
+            return SharedAxisTransition(
+              transitionType: SharedAxisTransitionType.horizontal,
+              animation: animation,
+              secondaryAnimation: secondaryAnimation,
+              child: child,
+            );
+          },
+          child: _pages[_selectedIndex],
+        ),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (int idx) => selectDestination(idx),
         indicatorColor: Theme.of(context).colorScheme.primary,
-        destinations: const <NavigationDestination>[
+        destinations: <NavigationDestination>[
           NavigationDestination(
-              selectedIcon:
-                  Icon(Icons.home, size: 20.0, color: kContentColorDarkTheme),
-              icon: Icon(
-                Icons.home,
-                size: 20.0,
-              ),
-              label: "Home"),
-          NavigationDestination(
-              selectedIcon: Icon(Icons.chat_bubble,
-                  size: 20.0, color: kContentColorDarkTheme),
-              icon: Icon(Icons.chat_bubble, size: 20.0),
-              label: "Chat"),
-          NavigationDestination(
-            icon: Icon(
-              Icons.settings,
+            selectedIcon: const Icon(Icons.home,
+                size: 20.0, color: kContentColorDarkTheme),
+            icon: const Icon(
+              Icons.home,
+              size: 20.0,
             ),
-            label: "Settings",
+            label: S.of(context).navigationBarHome,
+          ),
+          NavigationDestination(
+            selectedIcon: const Icon(
+              Icons.chat_bubble,
+              size: 20.0,
+              color: kContentColorDarkTheme,
+            ),
+            icon: const Icon(Icons.chat_bubble, size: 20.0),
+            label: S.of(context).navigationChat,
+          ),
+          NavigationDestination(
+            selectedIcon: const Icon(
+              Icons.settings,
+              size: 20.0,
+              color: kContentColorDarkTheme,
+            ),
+            icon: const Icon(
+              Icons.settings,
+              size: 20.0,
+            ),
+            label: S.of(context).navigationSettings,
           ),
         ],
       ),
@@ -85,7 +104,7 @@ class _AppState extends State<App> {
   }
 
   Widget _buildNewPostWidget(BuildContext context) {
-    return Theme.of(context).platform == TargetPlatform.android
+    return Theme.of(context).platform != TargetPlatform.android
         ? OpenContainer(
             transitionType: ContainerTransitionType.fade,
             openBuilder: (BuildContext context, VoidCallback _) {
@@ -110,7 +129,7 @@ class _AppState extends State<App> {
             },
           )
         : FloatingActionButton(
-            onPressed: () => Navigator.of(context).pushNamed('/feed/new-post'),
+            onPressed: () => Navigator.pushNamed(context, '/feed/new-post'),
             child: const Icon(
               Icons.add,
               color: Colors.white,

@@ -40,6 +40,7 @@ dependencies:
   animations: ^2.0.8
   shared_preferences: ^2.2.2
   reactive_forms: ^16.1.1
+  modal_bottom_sheet: ^3.0.0-pre
 
 dev_dependencies:
   flutter_test:

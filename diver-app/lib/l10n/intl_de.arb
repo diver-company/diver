@@ -14,6 +14,9 @@
   "registerUsernameHint": "Du kannst auch später einen Usernamen festlegen.",
   "registerSignInHere1": "Du hast bereits einen Account?",
   "registerSignInHere2": "Hier anmelden",
+  "navigationBarHome": "Home",
+  "navigationChat": "Chat",
+  "navigationSettings": "Einstellungen",
 
   "btn_getStarted": "Loslegen",
   "btn_signIn": "Anmelden",
