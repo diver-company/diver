@@ -34,6 +34,9 @@ ThemeData customThemeData(BuildContext context, {required bool isDark}) {
       builders: {
         TargetPlatform.android: CupertinoPageTransitionsBuilder()
       }
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      showDragHandle: true
     )
   );
 }

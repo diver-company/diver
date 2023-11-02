@@ -5,6 +5,7 @@ import 'package:diver/widgets/text_fields/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:diver/generated/l10n.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -14,11 +15,14 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repeatPasswordController =
-      TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
+  final FormGroup _form = fb.group({
+    'email': ['', Validators.required, Validators.email],
+    'password': ['', Validators.required],
+    'confirmPassword': ['', Validators.required],
+    'username': ['']
+  }, [
+    Validators.mustMatch('password', 'confirmPassword')
+  ]);
 
   @override
   Widget build(BuildContext context) {
@@ -40,31 +44,40 @@ class _RegisterState extends State<Register> {
                             ?.fontSize),
                   ),
                   const SizedBox(height: 32),
-                  Form(
+                  ReactiveForm(
+                    formGroup: _form,
                     child: Column(
                       children: [
-                        CustomTextField(
-                          hintText: S.of(context).registerEmail,
+                        ReactiveTextField(
                           obscureText: false,
-                          controller: _emailController,
+                          formControlName: 'email',
+                          decoration: InputDecoration(
+                              border: const OutlineInputBorder(),
+                              labelText: S.of(context).registerEmail),
                         ),
                         const SizedBox(height: 24),
-                        CustomTextField(
-                          hintText: S.of(context).registerPassword,
+                        ReactiveTextField(
                           obscureText: true,
-                          controller: _passwordController,
+                          formControlName: 'password',
+                          decoration: InputDecoration(
+                              border: const OutlineInputBorder(),
+                              labelText: S.of(context).registerPassword),
                         ),
                         const SizedBox(height: 24),
-                        CustomTextField(
-                          hintText: S.of(context).registerPasswordRepeat,
+                        ReactiveTextField(
                           obscureText: true,
-                          controller: _repeatPasswordController,
+                          formControlName: 'confirmPassword',
+                          decoration: InputDecoration(
+                              border: const OutlineInputBorder(),
+                              labelText: S.of(context).registerPasswordRepeat),
                         ),
                         const SizedBox(height: 64),
-                        CustomTextField(
-                          hintText: S.of(context).registerUsername,
+                        ReactiveTextField(
                           obscureText: false,
-                          controller: _usernameController,
+                          formControlName: 'username',
+                          decoration: InputDecoration(
+                              border: const OutlineInputBorder(),
+                              labelText: S.of(context).registerUsername),
                         ),
                         const SizedBox(height: 8),
                         Row(
@@ -72,17 +85,26 @@ class _RegisterState extends State<Register> {
                           children: [
                             Text(
                               S.of(context).registerUsernameHint,
-                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                fontWeight: FontWeight.w100,
-                                color: themeBasedDimmedContentColor(context),
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w100,
+                                    color:
+                                        themeBasedDimmedContentColor(context),
+                                  ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 32),
-                        PrimaryButton(
-                          text: S.of(context).btn_register,
-                          onTap: () {},
+                        ReactiveFormConsumer(
+                          builder: (context, form, child) {
+                            return PrimaryButton(
+                              text: S.of(context).btn_register,
+                              onTap: () {},
+                              disabled: form.invalid,
+                            );
+                          },
                         ),
                         const SizedBox(height: 24),
                         GestureDetector(
@@ -97,7 +119,8 @@ class _RegisterState extends State<Register> {
                                     .bodyLarge
                                     ?.copyWith(
                                         fontWeight: FontWeight.w100,
-                                        color: themeBasedDimmedContentColor(context)),
+                                        color: themeBasedDimmedContentColor(
+                                            context)),
                               ),
                               const SizedBox(width: 4),
                               Text(
@@ -107,7 +130,8 @@ class _RegisterState extends State<Register> {
                                     .bodyLarge
                                     ?.copyWith(
                                       fontWeight: FontWeight.bold,
-                                      color: themeBasedDimmedContentColor(context),
+                                      color:
+                                          themeBasedDimmedContentColor(context),
                                     ),
                               ),
                             ],

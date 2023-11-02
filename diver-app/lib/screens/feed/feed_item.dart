@@ -22,12 +22,12 @@ class _FeedItemState extends State<FeedItem> {
           child: Card(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(6.0)),
-            elevation: 3,
-            color: Theme.of(context).brightness == Brightness.light
+            elevation: 1,
+            /*color: Theme.of(context).brightness == Brightness.light
                 ? const Color(0xFFFFFFFF)
-                : const Color(0x1AFFFFFF),
+                : const Color(0x1AFFFFFF),*/
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +38,7 @@ class _FeedItemState extends State<FeedItem> {
                         "Erfurt",
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             fontWeight: FontWeight.bold,
-                            color: themeBasedDimmedContentColor(context)),
+                            color: Theme.of(context).colorScheme.secondary),
                       ),
                       const SizedBox(width: 2),
                       Text(
@@ -62,7 +62,7 @@ class _FeedItemState extends State<FeedItem> {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return Padding(
-                                      padding: const EdgeInsets.all(16.0),
+                                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                                       child: Wrap(
                                         children: [
                                           ListTile(
@@ -111,7 +111,7 @@ class _FeedItemState extends State<FeedItem> {
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium
-                        ?.copyWith(fontWeight: FontWeight.w100),
+                        ?.copyWith(fontWeight: FontWeight.w100, height: 1.5),
                   ),
                   const SizedBox(height: 8),
                   Row(

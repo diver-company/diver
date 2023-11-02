@@ -14,7 +14,7 @@ class Feed extends StatefulWidget {
 class _FeedState extends State<Feed> {
   final ScrollController _scrollController = ScrollController();
   final List<PostModel> _list = List<PostModel>.generate(15, (index) =>
-      PostModel(text: "$index Post", comments: index, likes: index * 1, shares: 0));
+      PostModel(text: "$index Post Hey Leute, ich habe da 'ne Frage, die mir schon länger im Kopf herumschwirrt: Was ist eigentlich wichtiger, geliebt zu werden oder selbst zu lieben? In dieser Welt, wo wir ständig nach Anerkennung suchen, frag' ich mich manchmal, ob wir mehr darauf aus sind, von anderen geliebt zu werden, anstatt uns selbst zu mögen. Sollten wir nicht zuerst uns selbst gern haben? Das beschäftigt mich total. Lasst uns quatschen.", comments: index, likes: index * 1, shares: 0));
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +29,8 @@ class _FeedState extends State<Feed> {
               closedColor: Colors.transparent,
               closedElevation: 0,
               openElevation: 0,
-              closedBuilder: (BuildContext _, VoidCallback openContainer) {
-                return FeedItem(post: _list[index]);
-              },
-              openBuilder: (BuildContext context, VoidCallback _) {
-                return Post(post: _list[index]);
-              },
+              closedBuilder: (BuildContext _, VoidCallback openContainer) => FeedItem(post: _list[index]),
+              openBuilder: (BuildContext context, VoidCallback _) => Post(post: _list[index]),
           );
         },
         separatorBuilder: (BuildContext context, int index) {

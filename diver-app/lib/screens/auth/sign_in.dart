@@ -77,12 +77,15 @@ class _SignInState extends State<SignIn> {
                       ],
                     ),
                     const SizedBox(height: 32),
-                    PrimaryButton(
-                      text: S.of(context).btn_signIn,
-                      onTap: () {
-                        Navigator.of(context).pushReplacementNamed('/feed');
-                      },
-                    ),
+                    ReactiveFormConsumer(builder: (context, form, child) {
+                      return PrimaryButton(
+                        text: S.of(context).btn_signIn,
+                        onTap: () {
+                          Navigator.of(context).pushReplacementNamed('/feed');
+                        },
+                        disabled: form.invalid,
+                      );
+                    }),
                     const SizedBox(height: 24),
                     GestureDetector(
                       onTap: () => Navigator.of(context).pushNamed('/register'),

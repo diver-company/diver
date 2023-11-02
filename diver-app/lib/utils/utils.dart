@@ -7,3 +7,9 @@ Color themeBasedDimmedContentColor(context) {
       ? kDimmedContentColorDarkTheme
       : kDimmedContentColorLightTheme;
 }
+
+BorderSide themeBasedBorderSide(BuildContext context) {
+  return BorderSide(
+    color: Theme.of(context).brightness == Brightness.light ? kContentColorLightTheme : kContentColorDarkTheme,
+  );
+}

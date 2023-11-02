@@ -3,7 +3,6 @@ import 'package:diver/constants.dart';
 import 'package:diver/screens/chat/chat.dart';
 import 'package:diver/screens/feed/feed.dart';
 import 'package:diver/screens/posts/new_post.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:diver/generated/l10n.dart';
@@ -16,7 +15,27 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  bool isExtended = true;
   int _selectedIndex = 0;
+  final ScrollController _scrollController = ScrollController();
+
+  void _scrollListener() {
+
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _scrollController.removeListener(_scrollListener);
+  }
 
   final List<Widget> _pages = <Widget>[
     const Feed(),

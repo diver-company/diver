@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:reactive_forms/reactive_forms.dart';
 
 class PrimaryButton extends StatefulWidget {
-  const PrimaryButton(
+  PrimaryButton(
       {super.key,
       required this.text,
       this.icon,
+      this.disabled = false,
       required this.onTap});
 
+  bool disabled;
   final String text;
   final IconData? icon;
   final void Function()? onTap;
@@ -20,14 +21,12 @@ class PrimaryButton extends StatefulWidget {
 class _PrimaryButtonState extends State<PrimaryButton> {
   @override
   Widget build(BuildContext context) {
-    final form = ReactiveForm.of(context);
-
     return Material(
-      color: form != null && form.invalid == true
+      color: widget.disabled
           ? Colors.grey
           : Theme.of(context).colorScheme.primary,
       borderRadius: BorderRadius.circular(6.0),
-      child: form != null && form.invalid == true
+      child: widget.disabled
           ? AbsorbPointer(
               child: _buttonState(),
             )
