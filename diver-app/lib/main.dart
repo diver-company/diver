@@ -1,11 +1,8 @@
 import 'package:diver/constants.dart';
+import 'package:diver/core/supabase/supabase.dart';
 import 'package:diver/env.dart';
-import 'package:diver/screens/app/app.dart';
-import 'package:diver/screens/auth/register.dart';
-import 'package:diver/screens/auth/sign_in.dart';
-import 'package:diver/screens/posts/new_post.dart';
-import 'package:diver/screens/welcome.dart';
 import 'package:diver/theme.dart';
+import 'package:diver/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:diver/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -26,7 +23,7 @@ class Diver extends StatefulWidget {
 }
 
 class _DiverState extends State<Diver> {
-  bool _isNew = true;
+  final _appRouter = AppRouter();
 
   @override
   void initState() {
@@ -36,19 +33,22 @@ class _DiverState extends State<Diver> {
   }
 
   Future<void> _decideInitialNavigation() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final bool? hasSeenWelcomeScreen = prefs.getBool(kHasSeenWelcomeScreen);
+    if (isAuthenticated()) {
+      _appRouter.replaceNamed('/app/feed');
+    } else {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    if (hasSeenWelcomeScreen != null && hasSeenWelcomeScreen) {
-      setState(() {
-        _isNew = false;
-      });
+      final bool? hasSeenWelcomeScreen = prefs.getBool(kHasSeenWelcomeScreen);
+
+      if (hasSeenWelcomeScreen != null && hasSeenWelcomeScreen) {
+        _appRouter.replaceNamed('/sign-in');
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         S.delegate,
@@ -60,14 +60,15 @@ class _DiverState extends State<Diver> {
       theme: customThemeData(context, isDark: false),
       darkTheme: customThemeData(context, isDark: true),
       title: "DIVER",
-      initialRoute: _isNew ? '/' : '/sign-in',
+      routerConfig: _appRouter.config(),
+      /*initialRoute: _isNew ? '/' : '/sign-in',
       routes: {
         '/': (context) => const Welcome(),
         '/sign-in': (context) => const SignIn(),
         '/register': (context) => const Register(),
         '/feed': (context) => const App(),
         '/feed/new-post': (context) => const NewPost(),
-      },
+      },*/
     );
   }
 }

@@ -1,17 +1,19 @@
 import 'package:animations/animations.dart';
+import 'package:auto_route/annotations.dart';
 import 'package:diver/models/post.model.dart';
 import 'package:diver/screens/feed/feed_item.dart';
 import 'package:diver/screens/posts/post.dart';
 import 'package:flutter/material.dart';
 
-class Feed extends StatefulWidget {
-  const Feed({super.key});
+@RoutePage()
+class FeedScreen extends StatefulWidget {
+  const FeedScreen({super.key});
 
   @override
-  State<Feed> createState() => _FeedState();
+  State<FeedScreen> createState() => _FeedScreenState();
 }
 
-class _FeedState extends State<Feed> {
+class _FeedScreenState extends State<FeedScreen> {
   final ScrollController _scrollController = ScrollController();
   final List<PostModel> _list = List<PostModel>.generate(15, (index) =>
       PostModel(text: "$index Post Hey Leute, ich habe da 'ne Frage, die mir schon länger im Kopf herumschwirrt: Was ist eigentlich wichtiger, geliebt zu werden oder selbst zu lieben? In dieser Welt, wo wir ständig nach Anerkennung suchen, frag' ich mich manchmal, ob wir mehr darauf aus sind, von anderen geliebt zu werden, anstatt uns selbst zu mögen. Sollten wir nicht zuerst uns selbst gern haben? Das beschäftigt mich total. Lasst uns quatschen.", comments: index, likes: index * 1, shares: 0));

@@ -1,3 +1,5 @@
+import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:diver/constants.dart';
 import 'package:diver/utils/utils.dart';
 import 'package:diver/widgets/buttons/primary_button.dart';
@@ -6,14 +8,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:diver/generated/l10n.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class Register extends StatefulWidget {
-  const Register({super.key});
+@RoutePage()
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterState extends State<Register> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final FormGroup _form = fb.group({
     'email': ['', Validators.required, Validators.email],
     'password': ['', Validators.required],
@@ -107,7 +110,7 @@ class _RegisterState extends State<Register> {
                         ),
                         const SizedBox(height: 24),
                         GestureDetector(
-                          onTap: () => Navigator.of(context).pop(),
+                          onTap: () => AutoRouter.of(context).back(),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

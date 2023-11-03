@@ -1,13 +1,15 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
-class Chat extends StatefulWidget {
-  const Chat({super.key});
+@RoutePage()
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
 
   @override
-  State<Chat> createState() => _ChatState();
+  State<ChatScreen> createState() => _ChatScreenState();
 }
 
-class _ChatState extends State<Chat> {
+class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return const Center(

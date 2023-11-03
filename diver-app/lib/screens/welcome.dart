@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:diver/constants.dart';
 import 'package:diver/widgets/buttons/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -7,21 +9,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:diver/generated/l10n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Welcome extends StatefulWidget {
-  const Welcome({super.key});
+@RoutePage()
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({super.key});
 
   @override
-  State<Welcome> createState() => _WelcomeState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeState extends State<Welcome> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   Future<void> _completeWelcomeScreen(BuildContext context) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     await prefs.setBool(kHasSeenWelcomeScreen, true);
 
     if (context.mounted) {
-      Navigator.pushReplacementNamed(context, '/sign-in');
+      AutoRouter.of(context).pushNamed('/sign-in');
     }
   }
 
