@@ -1,4 +1,5 @@
 import 'package:diver/constants.dart';
+import 'package:diver/env.dart';
 import 'package:diver/screens/app/app.dart';
 import 'package:diver/screens/auth/register.dart';
 import 'package:diver/screens/auth/sign_in.dart';
@@ -9,8 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:diver/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  await Supabase.initialize(url: Env.supabaseUrl, anonKey: Env.supabaseAnonKey);
+
   runApp(const Diver());
 }
 

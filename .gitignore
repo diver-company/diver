@@ -76,3 +76,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+/diver-app/.env
+/diver-app/lib/env.g.dart

@@ -1,7 +1,6 @@
 import 'package:diver/constants.dart';
 import 'package:diver/utils/utils.dart';
 import 'package:diver/widgets/buttons/primary_button.dart';
-import 'package:diver/widgets/text_fields/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:diver/generated/l10n.dart';
