@@ -1,7 +1,26 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:diver/core/supabase/supabase.dart';
 import 'package:diver/models/post.model.dart';
 import 'package:diver/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+String timeAgoFromNow(DateTime createdAt) {
+  Duration difference = DateTime.now().difference(createdAt);
+
+  if (difference.inSeconds < 60) {
+    return 'jetzt';
+  } else if (difference.inMinutes < 60) {
+    return 'vor ${difference.inMinutes} Minute${difference.inMinutes == 1 ? '' : 'n'}';
+  } else if (difference.inHours < 24) {
+    return 'vor ${difference.inHours} Stunde${difference.inHours == 1 ? '' : 'n'}';
+  } else if (difference.inDays < 30) {
+    return 'vor ${difference.inDays} Tag${difference.inDays == 1 ? '' : 'en'}';
+  } else {
+    int monthsDifference = difference.inDays ~/ 30;
+    return 'vor $monthsDifference Monat${monthsDifference == 1 ? '' : 'en'}';
+  }
+}
 
 class FeedItem extends StatefulWidget {
   const FeedItem({super.key, required this.post});
@@ -13,18 +32,34 @@ class FeedItem extends StatefulWidget {
 }
 
 class _FeedItemState extends State<FeedItem> {
-  late String _postDate = '';
+  late String _postDate = 'jetzt';
 
   @override
   void initState() {
     super.initState();
 
-    final diff = DateTime.now().difference(widget.post.createdAt).inMinutes;
-    print(diff);
-
     setState(() {
-      _postDate = diff > 0 ? "vor ${diff}min" : "jetzt";
+      _postDate = timeAgoFromNow(widget.post.createdAt);
     });
+  }
+
+  Future<void> _deletePost(BuildContext context) async {
+    try {
+      await supabase.from('posts').delete().match({ 'id': widget.post.id });
+
+      if (context.mounted) {
+        AutoRouter.of(context).pop();
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.all(16.0),
+            content: Text("Dein Post wurde erfolgreich gelöscht."),
+          )
+        );
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -73,14 +108,15 @@ class _FeedItemState extends State<FeedItem> {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                      padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
                                       child: Wrap(
                                         children: [
-                                          ListTile(
-                                            leading: const Icon(Icons.report),
-                                            title: const Text("Report"),
-                                            onTap: () {},
-                                          ),
+                                          if (widget.post.creator == supabase.auth.currentUser!.id)
+                                            ListTile(
+                                              leading: const Icon(Icons.delete_rounded),
+                                              title: const Text("Delete post"),
+                                              onTap: () => _deletePost(context),
+                                            ),
                                           ListTile(
                                             leading: const Icon(Icons.report),
                                             title: const Text("Report"),
@@ -95,6 +131,12 @@ class _FeedItemState extends State<FeedItem> {
                                   builder: (BuildContext context) =>
                                       CupertinoActionSheet(
                                     actions: [
+                                      if(widget.post.creator == supabase.auth.currentUser!.id)
+                                        CupertinoActionSheetAction(
+                                          isDestructiveAction: true,
+                                          onPressed: () => _deletePost(context),
+                                          child: const Text('Delete post'),
+                                        ),
                                       CupertinoActionSheetAction(
                                         isDestructiveAction: true,
                                         onPressed: () {

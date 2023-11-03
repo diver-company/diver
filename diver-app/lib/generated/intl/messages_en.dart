@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "btn_getStarted" : MessageLookupByLibrary.simpleMessage("Get started"),
+    "btn_post" : MessageLookupByLibrary.simpleMessage("Post"),
     "btn_register" : MessageLookupByLibrary.simpleMessage("Register"),
     "btn_signIn" : MessageLookupByLibrary.simpleMessage("Sign in"),
     "errorEmptyRequiredField" : MessageLookupByLibrary.simpleMessage("This field must not be empty."),
@@ -39,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "navigationChat" : MessageLookupByLibrary.simpleMessage("Chat"),
     "navigationCommunities" : MessageLookupByLibrary.simpleMessage("Communities"),
     "navigationSettings" : MessageLookupByLibrary.simpleMessage("Settings"),
+    "newPostEnterSomething" : MessageLookupByLibrary.simpleMessage("Enter something to be able to post."),
+    "newPostHintText" : MessageLookupByLibrary.simpleMessage("Write something..."),
     "registerConfirmEmailHint" : MessageLookupByLibrary.simpleMessage("Confirm your e-mail to complete the registration."),
     "registerEmail" : MessageLookupByLibrary.simpleMessage("Email"),
     "registerPassword" : MessageLookupByLibrary.simpleMessage("Password"),

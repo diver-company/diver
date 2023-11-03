@@ -19,6 +19,8 @@
   "navigationChat": "Chat",
   "navigationSettings": "Einstellungen",
   "navigationCommunities": "Communities",
+  "newPostHintText": "Schreibe etwas Einzigartiges...",
+  "newPostEnterSomething": "Gib etwas ein, um posten zu können.",
 
   "errorInvalidEmail": "Bitte trage eine gültige E-Mail ein.",
   "errorEmptyRequiredField": "Dieses Feld darf nicht leer sein.",
@@ -30,5 +32,6 @@
 
   "btn_getStarted": "Loslegen",
   "btn_signIn": "Anmelden",
-  "btn_register": "Registrieren"
+  "btn_register": "Registrieren",
+  "btn_post": "Posten"
 }

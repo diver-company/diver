@@ -44,6 +44,10 @@ class _FeedScreenState extends State<FeedScreen> {
   }
 
   Future<void> _refreshPosts() async {
+    setState(() {
+      posts = [];
+    });
+
     final newPosts = await PostModel.getAll();
 
     setState(() {

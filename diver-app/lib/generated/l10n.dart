@@ -237,6 +237,26 @@ class S {
     );
   }
 
+  /// `Write something...`
+  String get newPostHintText {
+    return Intl.message(
+      'Write something...',
+      name: 'newPostHintText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter something to be able to post.`
+  String get newPostEnterSomething {
+    return Intl.message(
+      'Enter something to be able to post.',
+      name: 'newPostEnterSomething',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please fill in a valid email.`
   String get errorInvalidEmail {
     return Intl.message(
@@ -332,6 +352,16 @@ class S {
     return Intl.message(
       'Register',
       name: 'btn_register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post`
+  String get btn_post {
+    return Intl.message(
+      'Post',
+      name: 'btn_post',
       desc: '',
       args: [],
     );

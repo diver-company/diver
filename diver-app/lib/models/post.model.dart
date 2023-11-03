@@ -1,6 +1,8 @@
 import 'package:diver/core/supabase/supabase.dart';
 
 class PostModel {
+  final int id;
+  final String creator;
   final String text;
   final int comments;
   final int likes;
@@ -8,7 +10,9 @@ class PostModel {
   final DateTime createdAt;
 
   PostModel(
-      {required this.text,
+      {required this.id,
+      required this.creator,
+      required this.text,
       required this.comments,
       required this.likes,
       required this.shares,
@@ -16,11 +20,10 @@ class PostModel {
 
   static Future<List<PostModel>> getAll() async {
     try {
-      final posts = await supabase.from('posts').select('*').order('created_at');
-      final converted = posts
-          .map((e) => PostModel.fromJson(e))
-          .toList()
-          .cast<PostModel>();
+      final posts =
+          await supabase.from('posts').select('*').order('created_at');
+      final converted =
+          posts.map((e) => PostModel.fromJson(e)).toList().cast<PostModel>();
 
       return converted;
     } catch (e) {
@@ -32,11 +35,12 @@ class PostModel {
 
   factory PostModel.fromJson(Map<String, dynamic> json) {
     return PostModel(
+        id: json['id'],
+        creator: json['creator'],
         text: json['text'],
         comments: json['comments'],
         likes: json['likes'],
         shares: json['shares'],
-        createdAt: DateTime.parse(json['created_at'])
-    );
+        createdAt: DateTime.parse(json['created_at']));
   }
 }
