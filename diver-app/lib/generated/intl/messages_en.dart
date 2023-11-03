@@ -19,14 +19,27 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static m0(length) => "The password has to be at least ${length} characters long.";
+
+  static m1(length) => "The username has to be at least ${length} characters long.";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "btn_getStarted" : MessageLookupByLibrary.simpleMessage("Get started"),
     "btn_register" : MessageLookupByLibrary.simpleMessage("Register"),
     "btn_signIn" : MessageLookupByLibrary.simpleMessage("Sign in"),
+    "errorEmptyRequiredField" : MessageLookupByLibrary.simpleMessage("This field must not be empty."),
+    "errorGeneralApiError" : MessageLookupByLibrary.simpleMessage("Something went wrong. Please try again."),
+    "errorInvalidEmail" : MessageLookupByLibrary.simpleMessage("Please fill in a valid email."),
+    "errorMinPasswordLength" : m0,
+    "errorMinUsernameLength" : m1,
+    "errorPasswordMatch" : MessageLookupByLibrary.simpleMessage("Passwords don\'t match."),
+    "errorSignIn" : MessageLookupByLibrary.simpleMessage("Email or password didn\'t match. Please try again."),
     "navigationBarHome" : MessageLookupByLibrary.simpleMessage("Home"),
     "navigationChat" : MessageLookupByLibrary.simpleMessage("Chat"),
+    "navigationCommunities" : MessageLookupByLibrary.simpleMessage("Communities"),
     "navigationSettings" : MessageLookupByLibrary.simpleMessage("Settings"),
+    "registerConfirmEmailHint" : MessageLookupByLibrary.simpleMessage("Confirm your e-mail to complete the registration."),
     "registerEmail" : MessageLookupByLibrary.simpleMessage("Email"),
     "registerPassword" : MessageLookupByLibrary.simpleMessage("Password"),
     "registerPasswordRepeat" : MessageLookupByLibrary.simpleMessage("Repeat password"),
@@ -38,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "signInPassword" : MessageLookupByLibrary.simpleMessage("Passsword"),
     "signInRegisterHere1" : MessageLookupByLibrary.simpleMessage("No account yet?"),
     "signInRegisterHere2" : MessageLookupByLibrary.simpleMessage("Register here"),
-    "signInUsernameOrEmail" : MessageLookupByLibrary.simpleMessage("Username or Email"),
+    "signInUsernameOrEmail" : MessageLookupByLibrary.simpleMessage("Email"),
     "welcomeDescription" : MessageLookupByLibrary.simpleMessage("Welcome to the community where freedom of expression and respectful interactions take center stage. Begin your journey with us and find your place in a diverse, anonymous, and inspiring environment – DIVER awaits you!"),
     "welcomeHeadline" : MessageLookupByLibrary.simpleMessage("Your voice, your anonymity, your community.")
   };

@@ -5,6 +5,7 @@ import 'package:diver/screens/auth/register.dart';
 import 'package:diver/screens/auth/sign_in.dart';
 import 'package:diver/screens/chat/chat.dart';
 import 'package:diver/screens/feed/feed.dart';
+import 'package:diver/screens/settings/settings.dart';
 import 'package:diver/screens/welcome.dart';
 
 part 'app_router.gr.dart';
@@ -23,6 +24,7 @@ class AppRouter extends _$AppRouter {
       children: [
         AutoRoute(page: FeedRoute.page, path: 'feed'),
         AutoRoute(page: ChatRoute.page, path: 'chat'),
+        AutoRoute(page: SettingsRoute.page, path: 'settings')
       ]
     ),
     RedirectRoute(path: '*', redirectTo: '/sign-in')

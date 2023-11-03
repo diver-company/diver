@@ -16,31 +16,7 @@ class AppScreen extends StatefulWidget {
 }
 
 class _AppScreenState extends State<AppScreen> {
-  bool isExtended = true;
   int _selectedIndex = 0;
-  final ScrollController _scrollController = ScrollController();
-
-  void _scrollListener() {}
-
-  @override
-  void initState() {
-    super.initState();
-
-    _scrollController.addListener(_scrollListener);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-
-    _scrollController.removeListener(_scrollListener);
-  }
-
-  void selectDestination(int idx) {
-    setState(() {
-      _selectedIndex = idx;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,52 +39,53 @@ class _AppScreenState extends State<AppScreen> {
               child: _buildNewPostWidget(context),
             )
           : null,
-      routes: const [FeedRoute(), ChatRoute(), ChatRoute()],
-      /*body: PageTransitionSwitcher(
-        reverse: _selectedIndex != 0,
-        transitionBuilder: (Widget child, Animation<double> animation,
-            Animation<double> secondaryAnimation) {
-          return FadeThroughTransition(
-            //transitionType: SharedAxisTransitionType.horizontal,
-            animation: animation,
-            secondaryAnimation: secondaryAnimation,
-            child: child,
-          );
-        },
-        child: _pages[_selectedIndex],
-      ),*/
+      routes: const [FeedRoute(), ChatRoute(), ChatRoute(), SettingsRoute()],
       bottomNavigationBuilder: (context, tabsRouter) {
         return NavigationBar(
           selectedIndex: tabsRouter.activeIndex,
-          onDestinationSelected: (int idx) => tabsRouter.setActiveIndex(idx),
+          onDestinationSelected: (int idx) {
+            setState(() {
+              _selectedIndex = idx;
+            });
+            tabsRouter.setActiveIndex(idx);
+          },
           indicatorColor: Theme.of(context).colorScheme.primary,
           destinations: <NavigationDestination>[
             NavigationDestination(
-              selectedIcon: const Icon(Icons.home,
+              selectedIcon: const Icon(Icons.home_rounded,
                   size: 20.0, color: kContentColorDarkTheme),
               icon: const Icon(
-                Icons.home,
+                Icons.home_rounded,
                 size: 20.0,
               ),
               label: S.of(context).navigationBarHome,
             ),
             NavigationDestination(
+              selectedIcon: const Icon(Icons.public_rounded,
+                  size: 20.0, color: kContentColorDarkTheme),
+              icon: const Icon(
+                Icons.public_rounded,
+                size: 20.0,
+              ),
+              label: S.of(context).navigationCommunities,
+            ),
+            NavigationDestination(
               selectedIcon: const Icon(
-                Icons.chat_bubble,
+                Icons.chat_bubble_rounded,
                 size: 20.0,
                 color: kContentColorDarkTheme,
               ),
-              icon: const Icon(Icons.chat_bubble, size: 20.0),
+              icon: const Icon(Icons.chat_bubble_rounded, size: 20.0),
               label: S.of(context).navigationChat,
             ),
             NavigationDestination(
               selectedIcon: const Icon(
-                Icons.settings,
+                Icons.settings_rounded,
                 size: 20.0,
                 color: kContentColorDarkTheme,
               ),
               icon: const Icon(
-                Icons.settings,
+                Icons.settings_rounded,
                 size: 20.0,
               ),
               label: S.of(context).navigationSettings,

@@ -3,8 +3,6 @@ import 'package:diver/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// 4OjcML8ISqL0R1T9
-
 class FeedItem extends StatefulWidget {
   const FeedItem({super.key, required this.post});
 
@@ -15,6 +13,20 @@ class FeedItem extends StatefulWidget {
 }
 
 class _FeedItemState extends State<FeedItem> {
+  late String _postDate = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    final diff = DateTime.now().difference(widget.post.createdAt).inMinutes;
+    print(diff);
+
+    setState(() {
+      _postDate = diff > 0 ? "vor ${diff}min" : "jetzt";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,10 +36,7 @@ class _FeedItemState extends State<FeedItem> {
           child: Card(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(6.0)),
-            elevation: 1,
-            /*color: Theme.of(context).brightness == Brightness.light
-                ? const Color(0xFFFFFFFF)
-                : const Color(0x1AFFFFFF),*/
+            elevation: Theme.of(context).brightness == Brightness.light ? 2 : 10,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
               child: Column(
@@ -51,7 +60,7 @@ class _FeedItemState extends State<FeedItem> {
                       ),
                       const SizedBox(width: 2),
                       Text(
-                        "vor 10min",
+                        _postDate,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: themeBasedDimmedContentColor(context)),
                       ),

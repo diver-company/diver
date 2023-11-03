@@ -67,10 +67,10 @@ class S {
     );
   }
 
-  /// `Username or Email`
+  /// `Email`
   String get signInUsernameOrEmail {
     return Intl.message(
-      'Username or Email',
+      'Email',
       name: 'signInUsernameOrEmail',
       desc: '',
       args: [],
@@ -187,6 +187,16 @@ class S {
     );
   }
 
+  /// `Confirm your e-mail to complete the registration.`
+  String get registerConfirmEmailHint {
+    return Intl.message(
+      'Confirm your e-mail to complete the registration.',
+      name: 'registerConfirmEmailHint',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Home`
   String get navigationBarHome {
     return Intl.message(
@@ -212,6 +222,86 @@ class S {
     return Intl.message(
       'Settings',
       name: 'navigationSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Communities`
+  String get navigationCommunities {
+    return Intl.message(
+      'Communities',
+      name: 'navigationCommunities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please fill in a valid email.`
+  String get errorInvalidEmail {
+    return Intl.message(
+      'Please fill in a valid email.',
+      name: 'errorInvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This field must not be empty.`
+  String get errorEmptyRequiredField {
+    return Intl.message(
+      'This field must not be empty.',
+      name: 'errorEmptyRequiredField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password has to be at least {length} characters long.`
+  String errorMinPasswordLength(Object length) {
+    return Intl.message(
+      'The password has to be at least $length characters long.',
+      name: 'errorMinPasswordLength',
+      desc: '',
+      args: [length],
+    );
+  }
+
+  /// `The username has to be at least {length} characters long.`
+  String errorMinUsernameLength(Object length) {
+    return Intl.message(
+      'The username has to be at least $length characters long.',
+      name: 'errorMinUsernameLength',
+      desc: '',
+      args: [length],
+    );
+  }
+
+  /// `Passwords don't match.`
+  String get errorPasswordMatch {
+    return Intl.message(
+      'Passwords don\'t match.',
+      name: 'errorPasswordMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email or password didn't match. Please try again.`
+  String get errorSignIn {
+    return Intl.message(
+      'Email or password didn\'t match. Please try again.',
+      name: 'errorSignIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong. Please try again.`
+  String get errorGeneralApiError {
+    return Intl.message(
+      'Something went wrong. Please try again.',
+      name: 'errorGeneralApiError',
       desc: '',
       args: [],
     );
