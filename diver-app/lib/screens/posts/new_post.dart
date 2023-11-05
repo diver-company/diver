@@ -86,10 +86,10 @@ class _NewPostState extends State<NewPost> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ReactiveFormConsumer(
-                          builder: (context, formGroup, child) {
-                            final str = formGroup.value['postText'] as String;
-                            return Text("${str.length}/200");
-                          },
+                        builder: (context, formGroup, child) {
+                          final str = formGroup.value['postText'] as String;
+                          return Text("${str.length}/200");
+                        },
                       ),
                       Expanded(child: Container()),
                       IconButton(
@@ -97,25 +97,33 @@ class _NewPostState extends State<NewPost> {
                         icon: const Icon(Icons.camera_alt_rounded, size: 20.0),
                       ),
                       const SizedBox(width: 8),
-                      ReactiveFormConsumer(builder: (context, form, child) {
-                        return FilledButton.icon(
-                          onPressed: form.invalid || _submitted
-                              ? null
-                              : () => _createPost(context),
-                          icon: _submitted
-                              ? const SizedBox(
-                                  width: 16,
-                                  height: 16,
-                                  child: CircularProgressIndicator(
-                                      color: Colors.white, strokeWidth: 3),
-                                )
-                              : const Icon(
-                                  Icons.send_rounded,
-                                  size: 20.0,
-                                ),
-                          label: Text(S.of(context).btn_post),
-                        );
-                      }),
+                      ReactiveFormConsumer(
+                        builder: (context, form, child) {
+                          return FilledButton.icon(
+                            onPressed: form.invalid || _submitted
+                                ? null
+                                : () => _createPost(context),
+                            icon: _submitted
+                                ? const SizedBox(
+                                    width: 16,
+                                    height: 16,
+                                    child: CircularProgressIndicator(
+                                        color: Colors.white, strokeWidth: 3),
+                                  )
+                                : const Icon(
+                                    Icons.send_rounded,
+                                    size: 20.0,
+                                    color: Colors.white,
+                                  ),
+                            label: Text(
+                              S.of(context).btn_post,
+                              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                color: Colors.white
+                              ),
+                            ),
+                          );
+                        },
+                      ),
                     ],
                   )
                 ],

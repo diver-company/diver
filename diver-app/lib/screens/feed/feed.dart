@@ -18,20 +18,20 @@ class FeedScreen extends StatefulWidget {
 
 class _FeedScreenState extends State<FeedScreen> {
   final ScrollController _scrollController = ScrollController();
-  late List<PostModel> posts = [];
-  late StreamSubscription _streamSubscription;
+  late List<PostModel> _posts = [];
+  late StreamSubscription _streamPostsSubscription;
 
-  final _stream = supabase.from('posts').stream(primaryKey: ['id']);
+  final _postsStream = supabase.from('posts').stream(primaryKey: ['id']).order('created_at');
 
   @override
   void initState() {
     super.initState();
 
-    _streamSubscription = _stream.listen((event) {
-      PostModel.getAll().then((value) {
-        setState(() {
-          posts = value;
-        });
+    _streamPostsSubscription = _postsStream.listen((event) {
+      List<PostModel> posts = event.map((e) => PostModel.fromJson(e)).toList();
+
+      setState(() {
+        _posts = posts;
       });
     });
   }
@@ -40,18 +40,18 @@ class _FeedScreenState extends State<FeedScreen> {
   void dispose() {
     super.dispose();
 
-    _streamSubscription.cancel();
+    _streamPostsSubscription.cancel();
   }
 
   Future<void> _refreshPosts() async {
     setState(() {
-      posts = [];
+      _posts = [];
     });
 
     final newPosts = await PostModel.getAll();
 
     setState(() {
-      posts = newPosts;
+      _posts = newPosts;
     });
   }
 
@@ -65,15 +65,15 @@ class _FeedScreenState extends State<FeedScreen> {
           physics: const AlwaysScrollableScrollPhysics(),
           key: const PageStorageKey<String>('feedController'),
           controller: _scrollController,
-          itemCount: posts.length,
+          itemCount: _posts.length,
           itemBuilder: (BuildContext context, int index) {
             return OpenContainer(
               closedColor: Colors.transparent,
               closedElevation: 0,
               openElevation: 0,
-              closedBuilder: (BuildContext _, VoidCallback openContainer) => FeedItem(post: posts[index]),
+              closedBuilder: (BuildContext _, VoidCallback openContainer) => FeedItem(post: _posts[index]),
               openBuilder: (BuildContext context, VoidCallback _) =>
-                  Post(post: posts[index]),
+                  Post(postId: _posts[index].id),
             );
           },
           separatorBuilder: (BuildContext context, int index) {

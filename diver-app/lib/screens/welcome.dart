@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:diver/constants.dart';
 import 'package:diver/widgets/buttons/primary_button.dart';
